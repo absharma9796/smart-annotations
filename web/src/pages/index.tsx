@@ -3,17 +3,35 @@ import Head from 'next/head'
 import Image from 'next/image'
 import AppLogo from '@reusable/icons/logo';
 import styles from '../styles/Home.module.css';
-import { Button, FormControl, InputLabel, TextField, Typography } from '@mui/material';
+import { Button, TextField, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { login__api } from './api/login';
+import logger from 'src/utils/logger';
+import { useRouter } from 'next/router';
+import axios from 'axios';
 
 const Home: NextPage = () => {
 
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
 
+  const [isLoggingIn, setisLoggingIn] = useState(false);
+
+  const router = useRouter();
+
   const handleLogin = async () => {
-    alert('Implement login logic here');
+    setisLoggingIn(true);
+    const { success, data } = await login__api(email, password);
+    if(success) {
+      logger.info('login success', data);
+      sessionStorage.setItem('token', data.token);
+      sessionStorage.setItem('user', JSON.stringify(email));
+      axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+      axios.defaults.headers.common['user'] = email;
+      router.push('/in/datasets');
+    }
+    setisLoggingIn(false);
   }
 
   return (
@@ -52,7 +70,7 @@ const Home: NextPage = () => {
             size={200}
           /> */}
         </motion.div>
-        <motion.div 
+        <motion.form 
           initial={{
             opacity: 0,
             y: 200
@@ -85,6 +103,8 @@ const Home: NextPage = () => {
               variant="outlined"
               className="my-2 focus:border-amber-700"
               size="medium"
+              value={email}
+              onChange={(e) => setemail(e.target.value)}
               fullWidth
             />
           </div>
@@ -101,20 +121,22 @@ const Home: NextPage = () => {
               variant="outlined"
               className="my-2 focus:border-amber-700"
               size="medium"
+              value={password}
+              onChange={(e) => setpassword(e.target.value)}
               fullWidth
             />
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center my-2">
             <Button
               variant="contained"
-              className="align-center mt-4 bg-gray-700 hover:bg-gray-600 text-white capitalize"
-              size="large"
+              className="bg-amber-600 hover:bg-amber-700 capitalize"
+              disabled={isLoggingIn}
               onClick={handleLogin}
             >
-              Login
+              Sign In
             </Button>
           </div>
-        </motion.div>
+        </motion.form>
       </main>
     </div>
   )

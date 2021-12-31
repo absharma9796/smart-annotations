@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Project-0",
+    "description": "This is a project",
+    "created_by": 1,
+    "created_on": "2021-12-31T07:42:23.501Z"
+  },
+  {
+    "id": 2,
+    "name": "Project-1",
+    "description": "This is a project",
+    "created_by": 1,
+    "created_on": "2021-12-31T07:42:23.501Z"
+  },
+  {
+    "id": 3,
+    "name": "Project-2",
+    "description": "This is a project",
+    "created_by": 1,
+    "created_on": "2021-12-31T07:42:23.501Z"
+  },
+  {
+    "id": 4,
+    "name": "Project-3",
+    "description": "This is a project",
+    "created_by": 1,
+    "created_on": "2021-12-31T07:42:23.501Z"
+  },
+  {
+    "id": 5,
+    "name": "Project-4",
+    "description": "This is a project",
+    "created_by": 1,
+    "created_on": "2021-12-31T07:42:23.501Z"
+  },
+  {
+    "name": "Project Psyduck",
+    "description": "This is super secret project",
+    "id": "a9b14538-ff24-491e-91ae-159dfc9cf1a3",
+    "created_by": 1,
+    "created_on": "2021-12-31T11:57:10.658Z"
+  },
+  {
+    "name": "Project Aquaman",
+    "description": "Batman wants to know your location",
+    "id": "8da7550d-8b6f-41ed-914f-00d655d76fb7",
+    "created_by": 1,
+    "created_on": "2021-12-31T11:58:47.868Z"
+  },
+  {
+    "name": "Project Marvel",
+    "description": "A space for upcoming marvel movies",
+    "id": "5ee18874-df66-4f45-8bc7-fb11e5097a91",
+    "created_by": 1,
+    "created_on": "2021-12-31T12:09:59.027Z"
+  }
+]

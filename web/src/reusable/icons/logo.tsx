@@ -1,6 +1,7 @@
 import * as React from "react";
+import { CustomIconProps } from ".";
 
-type AppLogoProps = {
+interface AppLogoProps extends CustomIconProps {
     size: number;
 }
 

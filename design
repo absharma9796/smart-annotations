@@ -1,0 +1,41 @@
+//Annotation Interface for Text and Audio
+//Which one to prefer?
+//Audio Annotation Interface
+    Assumptions:
+        1. Single Audio File can have multiple labels to be tagged
+        2. Admin decides the labels to be tagged
+    Doubts:
+        1. Admin decides which sections of the audio to be tagged
+            E.g - SampleAudio - 0:00 - 5:00
+                Admin has decided labels - isBot, isHuman, isQuestion, isAnswer
+                Also Admin has decided:-
+                    0:10-0:20
+                    1:20-1:25
+                    2:10-2:16
+                As data points to be tagged in this SampleAudio
+
+            OR  
+        1. Users can tag audio from any section of the audio
+            E.g - SampleAudio - 0:00 - 5:00
+                Admin has decided the labels - isBot, isHuman, isQuestion, isAnswer
+                Admin has assigned this audio data to a user
+                User sees the whole audio in the interface
+                and chooses sub sections of the audio and tags them with provided labels
+
+
+        2. Data (or DataPoint) vs Dataset - Is a single audio file (uploaded by admin) equivalent to a dataset?
+            and sections to be tagged in that audio file corresponds to a data point?
+
+            https://outline.skit.ai/share/8a75b77e-8fbf-4d21-8002-15bc61314bab#h-data
+        
+
+        
+
+
+
+// User types
+1. member - least access
+2. reviewer - can review
+3. admin - can do everything
+    Assumptions:
+        1. score ranges from 0-1

@@ -1,4 +1,4 @@
-import { AddCircleRounded, WorkspacePremiumRounded } from '@mui/icons-material';
+import { AddCircleRounded, BubbleChartRounded } from '@mui/icons-material';
 import { Button, IconButton, Typography } from '@mui/material';
 import { useReduxSelector } from '@redux/hooks';
 import { motion } from 'framer-motion';
@@ -13,7 +13,7 @@ const DatasetsHome = () => {
     const [createDatasetDialogOpen, setcreateDatasetDialogOpen] = useState(false);
 
     return (
-        <main className='flex flex-col'>
+        <main className='flex flex-col w-full'>
             <div className="hero-section pt-10">
                 <Typography
                     variant='h4'
@@ -27,7 +27,7 @@ const DatasetsHome = () => {
                     </b>
                 </Typography>
             </div>
-            <div className="actions-panel mt-5 p-4 bg-amber-100 shadow-inner">
+            <div className="actions-panel mt-5 p-4 bg-amber-100/50 shadow-inner">
                 <motion.div 
                     className="cursor-pointer flex flex-col justify-center text-gray-800 items-center w-32 h-32 bg-white hover:bg-gray-50 hover: p-4 rounded-lg"
                     whileHover={{
@@ -53,7 +53,7 @@ const DatasetsHome = () => {
                         variant='h5'
                         className='flex items-center text-gray-800'
                     >
-                        <WorkspacePremiumRounded fontSize='inherit' className="mr-2 fill-current text-amber-400"/> Datasets
+                        <BubbleChartRounded fontSize='inherit' className="mr-2 fill-current text-amber-400"/> Datasets
                     </Typography>
                 </div>
                 <DatasetListContainer />

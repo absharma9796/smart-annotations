@@ -3,12 +3,24 @@ import logger from './logger';
 const fs = require('fs');
 const fsp = require('fs/promises');
 
+/**
+ * TODO: Convert this file into a class
+ * 
+ * This file contains methods to c / r / u / d items
+ * stored in local filesystem and acts as local database apis.
+ * 
+ * Items are stored in a document fashion in json files,
+ * Think of it as your naive local document db
+ */
+
 let baseURL = './src/dataTypes/';
 let SchemaURLMap = Object.freeze({
     "projects": baseURL + 'projects.json',
     "users": baseURL + 'users.json',
     "datasets": baseURL + 'datasets.json',
+    "datapoints": baseURL + 'datapoints.json'
 });
+
 export const Schemas = Object.keys(SchemaURLMap).map(key => ({key: key}));
 
 type FunctionResponse = {success: boolean, message?: string}

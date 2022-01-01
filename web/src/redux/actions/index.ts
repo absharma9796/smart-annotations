@@ -1,6 +1,8 @@
 export * from './appActions/changeAppLoadingState.action';
 export * from './user.action';
 export * from './projects.action';
+export * from './datasets.action';
+export * from './datapoints.action';
 
 //Global App States
 export type AppStateType = keyof typeof __APP_STATES;
@@ -25,4 +27,8 @@ export const CONSTANTS = Object.freeze({
     SET_USER_DETAILS: 'SET_USER_DETAILS',
     //Project Related Actions
     PROJECTS__SET_PROJECTS: 'PROJECTS__SET_PROJECTS',
+    //Dataset Related Actions
+    DATASETS__SET_DATASETS: "DATASETS__SET_DATASETS",
+    //Datapoint Related Actions
+    DATAPOINTS__SET_DATAPOINTS: "DATAPOINTS__SET_DATAPOINTS"
 });

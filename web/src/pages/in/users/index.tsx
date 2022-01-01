@@ -1,13 +1,11 @@
 import ProtectedLayout from '@components/layouts/ProtectedLayout';
-import DatasetsHome from '@components/datasets/DatasetsHome';
-import Head from 'next/head';
-import React, { useState } from 'react'
-import SideNav from '@components/navigation/SideNav';
 import { NavButtonProps } from '@components/navigation/NavButton';
+import SideNav from '@components/navigation/SideNav';
 import { AccountCircleRounded, BubbleChartRounded } from '@mui/icons-material';
+import Head from 'next/head';
+import React from 'react'
 
-const DatasetsPage = () => {
-
+const UsersPage = () => {
     const navlist: NavButtonProps[] = [
         {
             title: "Datasets",
@@ -24,14 +22,14 @@ const DatasetsPage = () => {
     return (
         <ProtectedLayout>
             <Head>
-                <title>Datasets | Smart Annotations Interface</title>
+                <title>Users | Smart Annotations Interface</title>
             </Head>
             <SideNav 
                 navlist={navlist}
             />
-            <DatasetsHome />
+            Users Page
         </ProtectedLayout>
     )
 }
 
-export default DatasetsPage;
+export default UsersPage;

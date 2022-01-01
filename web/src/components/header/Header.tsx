@@ -21,10 +21,10 @@ export const Header = () => {
 
     return (
         <div className='flex justify-center items-center w-full h-14 bg-gray-800 z-40'>
-            <div className="flex items-center justify-between w-full h-full max-w-6xl px-10">
+            <div className="flex items-center justify-between w-full h-full max-w-7xl px-10">
                 <div className="logo flex items-center">
                     <Button
-                        onClick={() => router.push('/in/projects')}
+                        onClick={() => router.push('/in/datasets')}
                     >
                         <AppLogo size={40}/>
                         <span

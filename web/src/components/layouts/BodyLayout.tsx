@@ -9,7 +9,7 @@ const BodyLayout: FC = (props) => {
                 height: 'calc(100vh - 3.5rem)',
             }}
         >
-            <div className="container w-full max-w-6xl px-10">
+            <div className="flex container w-full max-w-7xl px-2 sm:px-10">
                 {props.children}
             </div>
         </div>

@@ -1,3 +1,120 @@
 [
-    
+  {
+    "name": "Cats vs Dogs Dataset",
+    "description": "This dataset contains audio clips of animals",
+    "data_type": "audio",
+    "id": "1dbdf6be-c9e9-4965-abca-46bae5374994",
+    "source": 1,
+    "created_on": "2022-01-01T10:02:31.898Z",
+    "modified_on": "2022-01-01T10:02:31.898Z",
+    "maximum_voters": 5,
+    "minimum_voters": 2,
+    "is_delete": false,
+    "is_tagged": false,
+    "minimum_consensus": 2,
+    "labels": [
+      "cat",
+      "dog",
+      "other"
+    ],
+    "label_colors": [
+      "#BEAEBB",
+      "#DEEBBE",
+      "#CCCADB"
+    ],
+    "type": [
+      1
+    ]
+  },
+  {
+    "name": "Bots vs Humans",
+    "description": "This dataset contains audio clips of bots and humans",
+    "data_type": "audio",
+    "id": "7de1b920-ef34-4de6-9e5b-1f56781dfacd",
+    "source": 1,
+    "created_on": "2022-01-01T10:14:56.952Z",
+    "modified_on": "2022-01-01T10:14:56.952Z",
+    "maximum_voters": 2,
+    "minimum_voters": 2,
+    "is_delete": false,
+    "is_tagged": false,
+    "minimum_consensus": 2,
+    "labels": [
+      "bot",
+      "human",
+      "question",
+      "answer",
+      "male",
+      "female"
+    ],
+    "label_colors": [
+      "#CCBBED",
+      "#FFAABB",
+      "#FAFECD",
+      "#DFBEBA",
+      "#ACEDEE",
+      "#FABAAC"
+    ],
+    "type": [
+      1
+    ]
+  },
+  {
+    "name": "NER - Emotions",
+    "description": "This is a named entity recognition dataset",
+    "data_type": "text",
+    "id": "d5c1ae5c-672b-412f-abff-3dc1060c3652",
+    "source": 1,
+    "created_on": "2022-01-01T10:32:58.708Z",
+    "modified_on": "2022-01-01T10:32:58.708Z",
+    "maximum_voters": 2,
+    "minimum_voters": 2,
+    "is_delete": false,
+    "is_tagged": false,
+    "minimum_consensus": 2,
+    "labels": [
+      "angry",
+      "sad",
+      "happy",
+      "depressed",
+      "anxious",
+      "irritated"
+    ],
+    "label_colors": [
+      "#EDCDCC",
+      "#CEBCDF",
+      "#CAFCDB",
+      "#FCEDAF",
+      "#DCBACD",
+      "#DAEECD"
+    ],
+    "type": [
+      1
+    ]
+  },
+  {
+    "name": "DC vs Marvel",
+    "description": "Audio clips from DCU and MCU.",
+    "data_type": "audio",
+    "id": "c4c8202c-dc77-407e-99e2-ed6eec39b4bf",
+    "source": 1,
+    "created_on": "2022-01-01T11:25:36.038Z",
+    "modified_on": "2022-01-01T11:25:36.038Z",
+    "maximum_voters": 2,
+    "minimum_voters": 2,
+    "is_delete": false,
+    "is_tagged": false,
+    "minimum_consensus": 2,
+    "labels": [
+      "marvel",
+      "dc"
+    ],
+    "label_colors": [
+      "#EACFBA",
+      "#FCBBBB"
+    ],
+    "type": [
+      1
+    ]
+  }
 ]

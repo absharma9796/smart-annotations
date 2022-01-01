@@ -1,9 +1,9 @@
 import { RefreshRounded, SearchRounded } from '@mui/icons-material';
 import { IconButton, Skeleton, TextField, Tooltip } from '@mui/material';
-import { setProjects__action } from '@redux/actions';
+import { setDatasets__action } from '@redux/actions';
 import { useReduxDispatch } from '@redux/hooks';
 import React, { useEffect, useState } from 'react'
-import { getProjects__api } from 'src/pages/api/projects';
+import { getDatasets__api } from 'src/pages/api/datasets';
 import DatasetList from './DatasetList';
 
 const DatasetListContainer = () => {
@@ -14,12 +14,12 @@ const DatasetListContainer = () => {
     const [refreshCounter, setrefreshCounter] = useState(0);
 
     useEffect(() => {
-        //TODO: call Projects api
-        (async function loadProjects() {
+        //TODO: call Datasets api
+        (async function loadDatasets() {
             setloading(true);
-            const { success, data } = await getProjects__api();
+            const { success, data } = await getDatasets__api();
             if(success) {
-                dispatch(setProjects__action(data));
+                dispatch(setDatasets__action(data));
             }
             setTimeout(() => setloading(false), 2000);
         })();
@@ -48,18 +48,14 @@ const DatasetListContainer = () => {
             </div>
             {
                 loading ? 
-                <div className="p-3 grid grid-flow-cols-dense grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-0  w-full">
+                <div className="grid grid-flow-cols-dense grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-0 w-full">
                     <Skeleton 
                         width={"100%"}
-                        height={200}
+                        height={250}
                     />
                     <Skeleton 
                         width={"100%"}
-                        height={200}
-                    />
-                    <Skeleton 
-                        width={"100%"}
-                        height={200}
+                        height={250}
                     />
                 </div>
                     :

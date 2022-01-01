@@ -5,7 +5,7 @@ import { ApiResponse, ExtendedRequest } from 'src/dataTypes/api.type';
 import { SampleEmailPassMap, SampleUsers } from 'src/dataTypes/user.type';
 import logger from '@utils/logger';
 import { authenticationMiddleware } from 'src/middlewares/authentication.mw';
-import { Project } from '@dataTypes/project.type';
+import { Dataset } from '@dataTypes/dataset.type';
 import { readItems } from '@utils/crudApis';
 
 /**
@@ -14,17 +14,17 @@ import { readItems } from '@utils/crudApis';
 const handler = nc<ExtendedRequest, NextApiResponse>();
 handler.use(authenticationMiddleware);
 /**
- * /projects GET endpoint - server side 
- *  Gives a list of projects
+ * /datasets GET endpoint - server side 
+ *  Gives a list of datasets
  */
 handler.get(async (req, res) => {
-    let projects = null;
+    let datasets = null;
     try {
-        projects = await readItems("projects");
-        if(projects) {
+        datasets = await readItems("datasets");
+        if(datasets) {
             res.status(200).json({
                 success: true,
-                data: projects
+                data: datasets
             });
             return;
         }
@@ -42,9 +42,9 @@ export default handler;
 /**
  * Client Side Request Handlers
  */
-export const getProjects__api: () => Promise<ApiResponse<Project[]>> = async () => {
-    const url = '/api/projects';
-    let result: ApiResponse<Project[]> = {
+export const getDatasets__api: () => Promise<ApiResponse<Dataset[]>> = async () => {
+    const url = '/api/datasets';
+    let result: ApiResponse<Dataset[]> = {
         success: false,
     }
     await Axios.get(url).then(response => {

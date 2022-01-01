@@ -1,6 +1,6 @@
 export interface DataPoint {
-    id: number;
-    dataset_id: number;
+    id: string | number;
+    dataset_id: string | number;
     audio: string;
     created_on: string;
     last_updated_on: string;

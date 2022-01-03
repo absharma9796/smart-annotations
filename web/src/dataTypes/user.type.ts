@@ -1,11 +1,12 @@
 export type Role = 'admin' | 'member' | 'reviewer';
 
 export type User = {
-    id: number;
+    id: number | string;
     name: string;
     member_since: string;
     last_active: string;
     score: number;
+    annotated_count: number;
     role: Role;
     email: string;
     last_project_id?: number;
@@ -20,7 +21,8 @@ export const SampleUsers: User[] = [
         "score": 0,
         "role": "admin",
         "email": "absharma9796@gmail.com",
-        "last_project_id": 1
+        "last_project_id": 1,
+        "annotated_count": 0,
     },
     {
         "id": 2,
@@ -30,7 +32,8 @@ export const SampleUsers: User[] = [
         "score": 0,
         "role": "member",
         "email": "",
-        "last_project_id": 1
+        "last_project_id": 1,
+        "annotated_count": 0,
     },
     {
         "id": 3,
@@ -40,7 +43,8 @@ export const SampleUsers: User[] = [
         "score": 0,
         "role": "member",
         "email": "",
-        "last_project_id": 1
+        "last_project_id": 1,
+        "annotated_count": 0,
     },
     {
         "id": 4,
@@ -50,7 +54,8 @@ export const SampleUsers: User[] = [
         "score": 0,
         "role": "member",
         "email": "",
-        "last_project_id": 1
+        "last_project_id": 1,
+        "annotated_count": 0,
     },
     {
         "id": 5,
@@ -60,7 +65,8 @@ export const SampleUsers: User[] = [
         "score": 0,
         "role": "member",
         "email": "",
-        "last_project_id": 1
+        "last_project_id": 1,
+        "annotated_count": 0,
     },
     {
         "id": 6,
@@ -70,7 +76,8 @@ export const SampleUsers: User[] = [
         "score": 0,
         "role": "member",
         "email": "",
-        "last_project_id": 1
+        "last_project_id": 1,
+        "annotated_count": 0,
     },
     {
         "id": 7,
@@ -80,7 +87,8 @@ export const SampleUsers: User[] = [
         "score": 0,
         "role": "member",
         "email": "",
-        "last_project_id": 1
+        "last_project_id": 1,
+        "annotated_count": 0,
     },
     {
         "id": 8,
@@ -90,7 +98,8 @@ export const SampleUsers: User[] = [
         "score": 0,
         "role": "member",
         "email": "",
-        "last_project_id": 1
+        "last_project_id": 1,
+        "annotated_count": 0,
     },
     {
         "id": 9,
@@ -100,7 +109,8 @@ export const SampleUsers: User[] = [
         "score": 0,
         "role": "member",
         "email": "",
-        "last_project_id": 1
+        "last_project_id": 1,
+        "annotated_count": 0,
     },
     {
         "id": 10,
@@ -110,7 +120,8 @@ export const SampleUsers: User[] = [
         "score": 0,
         "role": "member",
         "email": "",
-        "last_project_id": 1
+        "last_project_id": 1,
+        "annotated_count": 0,
     }
 ];
 

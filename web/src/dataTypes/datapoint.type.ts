@@ -19,7 +19,7 @@ export type AlternativesEntityEntity = {
 }
 
 export type LabelsEntity = {
-    user_id: number;
+    user_id: (string | number);
     label?: (string)[] | null;
 }
 

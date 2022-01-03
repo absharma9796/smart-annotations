@@ -15,7 +15,8 @@ const initialState: InitialState = {
         last_active: null,
         score: null,
         role: null,
-        email: null
+        email: null,
+        annotated_count: null
     }
 }
 

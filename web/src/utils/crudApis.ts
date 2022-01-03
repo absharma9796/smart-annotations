@@ -78,7 +78,7 @@ export const findItemById: <T>(schema: keyof typeof SchemaURLMap, id: string) =>
     return item;
 }
 
-export const findItemByIdAndPartialUpdate: <T>(schema: keyof typeof SchemaURLMap, id: string, partialUpdateData: Partial<T>) => Promise<T> = async (schema, id, partialUpdateData) => {
+export const findItemByIdAndPartialUpdate: <T>(schema: keyof typeof SchemaURLMap, id: (string | number), partialUpdateData: Partial<T>) => Promise<T> = async (schema, id, partialUpdateData) => {
     
     let schemaURL = SchemaURLMap[schema];
     if(!schemaURL) {
@@ -104,7 +104,7 @@ export const findItemByIdAndPartialUpdate: <T>(schema: keyof typeof SchemaURLMap
     return updatedItem;
 }
 
-export const findAndUpdateItemById: <T>(schema: keyof typeof SchemaURLMap, id: string, item: T) => Promise<T> = async (schema, id, item) => {
+export const findAndUpdateItemById: <T>(schema: keyof typeof SchemaURLMap, id: (string | number), item: T) => Promise<T> = async (schema, id, item) => {
     let schemaURL = SchemaURLMap[schema];
     if(!schemaURL) {
         return `Schema ${schema} not found`;

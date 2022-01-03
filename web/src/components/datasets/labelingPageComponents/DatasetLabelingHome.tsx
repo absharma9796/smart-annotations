@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux';
 import { getDataPoints__api } from 'src/pages/api/data';
 import { updateDatapoint__api } from 'src/pages/api/data/[data_id]';
 import { updateDataset__api } from 'src/pages/api/datasets/[dataset_id]';
+import { updateUser__api } from 'src/pages/api/users/[user_id]';
 const AudioGraph = dynamic(() => import('./AudioGraph'), { ssr: false });
 
 type DatasetLabelingHomeProps = {
@@ -101,9 +102,23 @@ const DatasetLabelingHome: React.FC<DatasetLabelingHomeProps> = ({
         
         // If consensus achieved, reward the user
         if(consensusStatus?.winners?.length) {
-            //TODO: Call API to update user score
             consensusStatus.winners.forEach((user_id) => {
-                
+                let newAnnotatedCount = user?.annotated_count;
+                let newScore = user?.score;
+                if(!(datapointsForSelectedDataset[audioIdx]?.labels.filter(l => l?.user_id === user_id)?.length)) {
+                    newAnnotatedCount += 1;
+                    newScore = (user?.annotated_count*user?.score + 1) / Math.max(newAnnotatedCount, 1)
+                } else {
+                    newScore = (user?.annotated_count*user?.score + 1) / Math.max(user?.annotated_count, 1);
+                }
+                logger.info("New Score logic: ", newScore, newAnnotatedCount)
+                updateUser__api({
+                    user_id,
+                    data: {
+                        score: newScore,
+                        annotated_count: newAnnotatedCount
+                    }
+                });
             })
         }
         
@@ -126,12 +141,12 @@ const DatasetLabelingHome: React.FC<DatasetLabelingHomeProps> = ({
             });
         }
 
-        if(!newReviewerLabel?.user_id && (user?.role === "admin" || user?.role === "reviewer")) {
-            newReviewerLabel = {
-                user_id: user?.id,
-                label: selectedLabels
-            };
-        }
+        // if(!newReviewerLabel?.user_id && (user?.role === "admin" || user?.role === "reviewer")) {
+        //     newReviewerLabel = {
+        //         user_id: user?.id,
+        //         label: selectedLabels
+        //     };
+        // }
         const { success, data } = await updateDatapoint__api({
             dataset_id,
             data_id: datapointsForSelectedDataset[audioIdx]?.id,
@@ -139,7 +154,7 @@ const DatasetLabelingHome: React.FC<DatasetLabelingHomeProps> = ({
                 ...datapointsForSelectedDataset[audioIdx],
                 labels: newLabels,
                 state: newState,
-                reviewer_labels: newReviewerLabel,
+                // reviewer_labels: newReviewerLabel,
                 tagged_by: newLabels.length
             }
         })

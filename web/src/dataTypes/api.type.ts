@@ -10,7 +10,7 @@ export type ApiResponse<T = any> = {
 export interface ExtendedRequest extends NextApiRequest {
     token?: string;
     email?: string;
-    userid?: number;
+    userid?: (string | number);
     projectid?: number | string;
     files?: any;
 }

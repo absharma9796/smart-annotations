@@ -2,9 +2,10 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import nc from 'next-connect';
 import Axios from 'axios';
 import { ApiResponse, ExtendedRequest } from 'src/dataTypes/api.type';
-import { SampleEmailPassMap, SampleUsers } from 'src/dataTypes/user.type';
+import { SampleEmailPassMap, SampleUsers, User } from 'src/dataTypes/user.type';
 import logger from '@utils/logger';
 import { authenticationMiddleware } from 'src/middlewares/authentication.mw';
+import { readItems } from '@utils/crudApis';
 
 /**
  * Server Side Request Handlers
@@ -16,7 +17,8 @@ handler.use(authenticationMiddleware);
  */
 handler.get(async (req, res) => {
 
-    const user = SampleUsers.find(user => user.email.toLowerCase() === req.email.toLowerCase());
+    const users = await readItems<User>('users');
+    const user = Array.isArray(users) ? users.find(user => user.email.toLowerCase() === req.email.toLowerCase()) : undefined;
     if(!user) {
         res.status(404).json({
             success: false,

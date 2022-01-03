@@ -1,3 +1,111 @@
 [
-    
+  {
+    "id": "a9d93795-efdd-4b39-bb97-9c076e72b671",
+    "dataset_id": "1dbdf6be-c9e9-4965-abca-46bae5374994",
+    "audio": "/uploads/1dbdf6be-c9e9-4965-abca-46bae5374994__2022-01-02T09:57:05.020Z__Final+FAQ+Handling.mp3",
+    "created_on": "2022-01-02T09:57:05.020Z",
+    "last_updated_on": "2022-01-02T09:57:05.020Z",
+    "alternatives": null,
+    "tagged_by": 2,
+    "labels": [
+      {
+        "user_id": 1,
+        "label": [
+          "other",
+          "dog",
+          "cat"
+        ]
+      },
+      {
+        "user_id": 2,
+        "label": [
+          "other"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "PENDING",
+    "is_deleted": false
+  },
+  {
+    "id": "9e89234f-773f-4494-ab3d-5df910c9b454",
+    "dataset_id": "1dbdf6be-c9e9-4965-abca-46bae5374994",
+    "audio": "/uploads/1dbdf6be-c9e9-4965-abca-46bae5374994__2022-01-02T09:58:41.585Z__insurance_vernacular_v1.wav",
+    "created_on": "2022-01-02T09:58:41.585Z",
+    "last_updated_on": "2022-01-02T09:58:41.585Z",
+    "alternatives": null,
+    "tagged_by": 2,
+    "labels": [
+      {
+        "user_id": 1,
+        "label": [
+          "other"
+        ]
+      },
+      {
+        "user_id": 2,
+        "label": [
+          "other"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "PENDING",
+    "is_deleted": false
+  },
+  {
+    "id": "a2562047-53da-4b4d-b6f0-fb355032d897",
+    "dataset_id": "1dbdf6be-c9e9-4965-abca-46bae5374994",
+    "audio": "/uploads/1dbdf6be-c9e9-4965-abca-46bae5374994__2022-01-02T10:11:01.049Z__US+Insurance+Demo+-+Address+Change+Request.mp3",
+    "created_on": "2022-01-02T10:11:01.049Z",
+    "last_updated_on": "2022-01-02T10:11:01.049Z",
+    "alternatives": null,
+    "tagged_by": 2,
+    "labels": [
+      {
+        "user_id": 1,
+        "label": [
+          "other"
+        ]
+      },
+      {
+        "user_id": 2,
+        "label": [
+          "cat",
+          "other"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "PENDING",
+    "is_deleted": false
+  },
+  {
+    "id": "374fb3a6-70db-4b12-a4b1-a1d3e3b6206e",
+    "dataset_id": "1dbdf6be-c9e9-4965-abca-46bae5374994",
+    "audio": "/uploads/1dbdf6be-c9e9-4965-abca-46bae5374994__2022-01-02T10:25:57.465Z__US+Insurance+Demo+-+Address+Change+Request.mp3",
+    "created_on": "2022-01-02T10:25:57.465Z",
+    "last_updated_on": "2022-01-02T10:25:57.465Z",
+    "alternatives": null,
+    "tagged_by": 2,
+    "labels": [
+      {
+        "user_id": 1,
+        "label": [
+          "dog",
+          "other"
+        ]
+      },
+      {
+        "user_id": 2,
+        "label": [
+          "other",
+          "cat"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "PENDING",
+    "is_deleted": false
+  }
 ]

@@ -12,4 +12,5 @@ export interface ExtendedRequest extends NextApiRequest {
     email?: string;
     userid?: number;
     projectid?: number | string;
+    files?: any;
 }

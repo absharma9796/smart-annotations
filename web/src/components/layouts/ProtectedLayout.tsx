@@ -24,7 +24,7 @@ const ProtectedLayout: React.FC = ({
     useEffect(() => {
         //TODO: call user api
         (async function loadProfile() {
-
+            if(appState === __APP_STATES.LOADED) return;
             const { success, data: userDetails } = await getLoggedInUserDetails__api();
             if(success && userDetails?.id) {
                 dispatch(setUser__action(userDetails));

@@ -1,7 +1,8 @@
-import { Checkbox } from '@mui/material';
+import { PlayArrowRounded } from '@mui/icons-material';
+import { Button, Checkbox } from '@mui/material';
 import { useReduxSelector } from '@redux/hooks';
 import { datapointsList__selector } from '@redux/selectors/datapoints.selector';
-import React from 'react';
+import React, { useState } from 'react';
 
 type DatapointsTableProps = {
     dataset_id?: string | number
@@ -13,10 +14,20 @@ const DatapointsTable: React.FC<DatapointsTableProps> = ({
 
     const datapointsForSelectedDataset = useReduxSelector(state => datapointsList__selector(state, dataset_id));
 
+    const [audioFilesIsLoaded, setaudioFilesIsLoaded] = useState(Array(datapointsForSelectedDataset.length).fill(false));
+
+    const handleLoadAudio = (index) => {
+        setaudioFilesIsLoaded(prev => {
+            let newArray = [...prev];
+            newArray[index] = true;
+            return newArray;
+        })
+    }
+
     return (
-        <table className="table w-full">
-            <thead>
-                <tr className='flex flex-shrink-0 w-full items-center'>
+        <table className="block w-full overflow-hidden">
+            <thead className='block'>
+                <tr className='block w-full items-center'>
                     <th
                         className="p-4 text-left max-w-min"
                     >
@@ -48,28 +59,61 @@ const DatapointsTable: React.FC<DatapointsTableProps> = ({
                 </tr>
                 <hr />
             </thead>
-            <tbody>
+            <tbody  className='block'>
                 {
                     datapointsForSelectedDataset?.length ?
-                    datapointsForSelectedDataset.map(datapoint => (
+                    datapointsForSelectedDataset.map((datapoint, idx) => (
                         <tr
-                            className="text-left hover:bg-gray-50"
+                            className={`flex flex-shrink-0 items-center w-full text-left hover:bg-amber-50 ${idx % 2 === 0 ? 'bg-gray-50' : ''}`}
+                            key={datapoint?.id}
                         >
-                            <th>
+                            <td className="p-4 text-left max-w-min">
                                 <Checkbox 
                                     size="small"
                                     color="warning"
                                 />
-                            </th>
-                            <th>
+                            </td>
+                            <td 
+                                className="p-4 truncate text-left w-1/4"
+                                title={`${datapoint?.id}`}
+                            >
                                 {datapoint?.id}
-                            </th>
-                            <th>
+                            </td>
+                            <td 
+                                className="p-4 truncate text-left w-1/4"
+                            >
                                 {datapoint?.tagged_by}
-                            </th>
-                            <th>
+                            </td>
+                            <td 
+                                className="p-4 truncate text-left w-1/4"
+                                title={`${datapoint?.state}`}
+                            >
                                 {datapoint?.state}
-                            </th>
+                            </td>
+                            <td 
+                                className="p-4 truncate text-left w-1/4"
+                                title={`${datapoint?.audio}`}
+                            >
+                                {
+                                    audioFilesIsLoaded[idx] ?
+                                    <audio 
+                                        controls
+                                        className="w-full"
+                                    >
+                                        <source src={datapoint?.audio} type="audio/mpeg" />
+                                    </audio>
+                                        :
+                                    <Button
+                                        className="capitalize"
+                                        color="warning"
+                                        startIcon={<PlayArrowRounded />}
+                                        onClick={() => handleLoadAudio(idx)}
+                                    >
+                                        Click to load audio
+                                    </Button>   
+                                }
+                                {/* {datapoint?.audio} */}
+                            </td>
                         </tr>
                     ))
                         :

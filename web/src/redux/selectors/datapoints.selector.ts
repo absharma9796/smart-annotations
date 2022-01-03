@@ -3,7 +3,7 @@ import logger from "@utils/logger";
 import { createSelector } from "reselect";
 
 const datapointsListSlice = (state: RootState, _) => state.datapointsState.datapointsById;
-const dataset_id_input = (_, dataset_id: string | number) => dataset_id_input;
+const dataset_id_input = (_, dataset_id: string | number) => dataset_id;
 
 export const datapointsList__selector = createSelector(
     [datapointsListSlice, dataset_id_input],

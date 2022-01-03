@@ -8,10 +8,12 @@ import DatapointsTable from './DatapointsTable';
 
 type DatapointsTableContainerProps = {
     dataset_id: string | number;
+    dataRefreshCounter: number;
 }
 
 const DatapointsTableContainer: React.FC<DatapointsTableContainerProps> = ({
-    dataset_id
+    dataset_id,
+    dataRefreshCounter
 }) => {
 
     const dispatch = useReduxDispatch();
@@ -21,15 +23,17 @@ const DatapointsTableContainer: React.FC<DatapointsTableContainerProps> = ({
     useEffect(() => {
         //TODO: fetch dataset metadata if not present and also data points
         (async function loadDataPoints() {
+            setdataLoading(true);
             const { success, data } = await getDataPoints__api({
                 dataset_id
             });
             if(success) {
                 dispatch(setDatapoints__action(data));
             }
+            setdataLoading(false);
         })();
         return () => {}
-    }, []);
+    }, [dataRefreshCounter]);
 
     if(dataLoading) {
         return(
@@ -54,7 +58,9 @@ const DatapointsTableContainer: React.FC<DatapointsTableContainerProps> = ({
 
     return (
         <div className="block">
-            <DatapointsTable />
+            <DatapointsTable 
+                dataset_id={dataset_id}
+            />
         </div>
     )
 }

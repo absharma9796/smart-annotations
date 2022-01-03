@@ -11,7 +11,7 @@ export const datasetsList__selector = createSelector(
     }
 );
 
-const datasetByIdSlice = (state: RootState, datasetId: number) => state.datasetsState.datasetsById[datasetId];
+const datasetByIdSlice = (state: RootState, datasetId: string | number) => state.datasetsState.datasetsById[datasetId];
 export const datasetById__selector = createSelector(
     [datasetByIdSlice],
     (dataset) => {

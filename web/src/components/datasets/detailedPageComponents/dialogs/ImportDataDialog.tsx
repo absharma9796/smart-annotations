@@ -46,6 +46,9 @@ const ImportDataDialog: React.FC<ImportDataDialogProps> = ({
             dataset_id,
             files: formFields.audioFiles
         });
+        if(success) {
+            onClose();
+        }
     }
 
     return (

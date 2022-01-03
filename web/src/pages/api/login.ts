@@ -2,8 +2,9 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import nc from 'next-connect';
 import Axios from 'axios';
 import { ApiResponse } from 'src/dataTypes/api.type';
-import { SampleEmailPassMap, SampleUsers } from 'src/dataTypes/user.type';
+import { SampleEmailPassMap, SampleUsers, User } from 'src/dataTypes/user.type';
 import logger from 'src/utils/logger';
+import { readItems } from '@utils/crudApis';
 
 /**
  * Server Side Request Handlers
@@ -26,7 +27,8 @@ handler.post(async (req, res) => {
         });
         return;
     }
-    if(SampleUsers.map(user => user.email.toLowerCase()).includes(email.toLowerCase())) {
+    const users = await readItems<User>('users');
+    if(Array.isArray(users) && users.map(user => user.email.toLowerCase()).includes(email.toLowerCase())) {
         if(SampleEmailPassMap[email.toLowerCase()] === password) {
             res.status(200).json({
                 success: true,

@@ -1,9 +1,10 @@
 import { Skeleton } from '@mui/material';
-import { setDatapoints__action } from '@redux/actions';
+import { setDatapoints__action, setDatasets__action } from '@redux/actions';
 import { useReduxDispatch, useReduxSelector } from '@redux/hooks';
 import { datapointsList__selector } from '@redux/selectors/datapoints.selector';
 import React, { useEffect, useState } from 'react'
 import { getDataPoints__api } from 'src/pages/api/data';
+import { getDatasetById__api } from 'src/pages/api/datasets/[dataset_id]';
 import DatapointsTable from './DatapointsTable';
 
 type DatapointsTableContainerProps = {
@@ -33,6 +34,15 @@ const DatapointsTableContainer: React.FC<DatapointsTableContainerProps> = ({
             setdataLoading(false);
         })();
         return () => {}
+    }, [dataRefreshCounter]);
+
+    useEffect(() => {
+        (async function loadDatasetMetadata() {
+            const { success, data } = await getDatasetById__api(dataset_id)
+            if(success) {
+                dispatch(setDatasets__action([data]));
+            }
+        })();   
     }, [dataRefreshCounter]);
 
     if(dataLoading) {

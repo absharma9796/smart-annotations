@@ -21,28 +21,34 @@ const DatasetDetailsPage = () => {
             <Head>
                 <title>Dataset - {dataset_id} | Smart Annotations Interface</title>
             </Head>
-            <DatasetDetailsLayout 
-                dataset_id={dataset_id}
-            >
-                <DatasetActionButtonsPanel 
-                    onImportClick={() => setimportDialogOpen(true)}
-                    onRefreshClick={() => setdataRefreshCounter(prev => prev + 1)}
-                    onStartLabelingClick={() => router.push(`/in/datasets/${dataset_id}/label`)}
-            />
-                <hr />
-                <DatapointsTableContainer 
-                    dataset_id={dataset_id}
-                    dataRefreshCounter={dataRefreshCounter}
-                />
-                {
-                    importDialogOpen &&
-                    <ImportDataDialog 
-                        isOpen={importDialogOpen}
-                        onClose={() => {setimportDialogOpen(false); setdataRefreshCounter(prev => prev + 1);}}
+            {
+                !!dataset_id && (
+                    <DatasetDetailsLayout 
                         dataset_id={dataset_id}
+                    >
+                        <DatasetActionButtonsPanel 
+                            dataset_id={`${dataset_id}`}
+                            dataRefreshCounter={dataRefreshCounter}
+                            onImportClick={() => setimportDialogOpen(true)}
+                            onRefreshClick={() => setdataRefreshCounter(prev => prev + 1)}
+                            onStartLabelingClick={() => router.push(`/in/datasets/${dataset_id}/label`)}
                     />
-                }
-            </DatasetDetailsLayout>
+                        <hr />
+                        <DatapointsTableContainer 
+                            dataset_id={dataset_id}
+                            dataRefreshCounter={dataRefreshCounter}
+                        />
+                        {
+                            importDialogOpen &&
+                            <ImportDataDialog 
+                                isOpen={importDialogOpen}
+                                onClose={() => {setimportDialogOpen(false); setdataRefreshCounter(prev => prev + 1);}}
+                                dataset_id={dataset_id}
+                            />
+                        }
+                    </DatasetDetailsLayout>
+                )
+            }
         </ProtectedLayout>
     )
 }

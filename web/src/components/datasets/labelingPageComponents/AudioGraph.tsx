@@ -44,7 +44,7 @@ const AudioGraph = ({
 
     return (
         <div className='flex flex-col w-full'>
-            <div ref={waveformRef}>
+            <div ref={waveformRef} className='w-full'>
             
             </div>
             <hr />

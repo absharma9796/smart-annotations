@@ -7,6 +7,7 @@ export type DataPoint = {
     alternatives?: ((AlternativesEntityEntity)[] | null)[] | null;
     tagged_by?: number | null;
     labels?: (LabelsEntity)[] | null;
+    reviewer_labels?: LabelsEntity| null;
     score: number;
     state: DatapointState;
     is_delete: boolean;

@@ -78,6 +78,32 @@ export const findItemById: <T>(schema: keyof typeof SchemaURLMap, id: string) =>
     return item;
 }
 
+export const findItemByIdAndPartialUpdate: <T>(schema: keyof typeof SchemaURLMap, id: string, partialUpdateData: Partial<T>) => Promise<T> = async (schema, id, partialUpdateData) => {
+    
+    let schemaURL = SchemaURLMap[schema];
+    if(!schemaURL) {
+        return `Schema ${schema} not found`;
+    }
+
+    let updatedItem: any = null;
+    await fsp.readFile(schemaURL, 'utf8').then(data => {
+        // logger.info("Before parsing json", typeof data);
+        let currentItems = JSON.parse(data);
+        let itemIndex = currentItems.findIndex(p => p?.id === id);
+        if(itemIndex > -1) {
+            currentItems[itemIndex] = {
+                ...currentItems[itemIndex],
+                ...partialUpdateData
+            };
+            updatedItem = currentItems[itemIndex];
+            fsp.writeFile(schemaURL, JSON.stringify(currentItems, null, 2), 'utf8');
+        }
+    }).catch(err => {
+        logger.error('Error Finding Item: ', err);
+    })
+    return updatedItem;
+}
+
 export const findAndUpdateItemById: <T>(schema: keyof typeof SchemaURLMap, id: string, item: T) => Promise<T> = async (schema, id, item) => {
     let schemaURL = SchemaURLMap[schema];
     if(!schemaURL) {

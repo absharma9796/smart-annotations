@@ -133,7 +133,7 @@ const Home: NextPage = () => {
               disabled={isLoggingIn}
               onClick={handleLogin}
             >
-              Sign In
+              {isLoggingIn ? "Processing..." : "Sign In"}
             </Button>
           </div>
         </motion.form>

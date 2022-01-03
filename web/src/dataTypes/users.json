@@ -21,22 +21,22 @@
     },
     {
         "id": 3,
-        "name": "Happy Psyduck",
+        "name": "Agent Reviewer",
         "member_since": "2021-12-30T05:18:56.864Z",
         "last_active": "2021-12-30T05:18:56.864Z",
         "score": 0,
-        "role": "member",
-        "email": "",
+        "role": "reviewer",
+        "email": "iamreviewer@gmail.com",
         "last_project_id": 1
     },
     {
         "id": 4,
-        "name": "Happy Psyduck",
+        "name": "Agent Member",
         "member_since": "2021-12-30T05:18:56.864Z",
         "last_active": "2021-12-30T05:18:56.864Z",
         "score": 0,
         "role": "member",
-        "email": "",
+        "email": "iammember@gmail.com",
         "last_project_id": 1
     },
     {

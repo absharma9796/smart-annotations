@@ -4,11 +4,12 @@ import Axios from 'axios';
 import { ApiResponse, ExtendedRequest } from 'src/dataTypes/api.type';
 import logger from '@utils/logger';
 import { authenticationMiddleware } from 'src/middlewares/authentication.mw';
-import { addItem, readItems } from '@utils/crudApis';
+import { addItem, findItemById, findItemByIdAndPartialUpdate, readItems } from '@utils/crudApis';
 import { DataPoint } from '@dataTypes/datapoint.type';
 import fs from 'fs';
 import { fileParserMiddleware } from 'src/middlewares/fileParser.mw';
 import crypto from 'crypto';
+import { Dataset } from '@dataTypes/dataset.type';
 
 /**
  * Server Side Request Handlers
@@ -22,7 +23,7 @@ handler.use(authenticationMiddleware, fileParserMiddleware);
 handler.get(async (req, res) => {
     logger.info('GET /data', req.query);
     const dataset_id = req.query?.dataset_id as string;
-    logger.info(`GET /data?dataset_id=${dataset_id}`);
+    // logger.info(`GET /data?dataset_id=${dataset_id}`);
     if(!dataset_id) {
         res.status(400).json({
             success: false,
@@ -35,7 +36,7 @@ handler.get(async (req, res) => {
     try {
 
         datapoints = await readItems("datapoints");
-        logger.info({datapoints});
+        // logger.info({datapoints});
         if(Array.isArray(datapoints)) {
             const requestedDatapoints = datapoints.filter(data => (data?.dataset_id === dataset_id) && !data?.is_deleted);
             res.status(200).json({
@@ -76,12 +77,18 @@ handler.post(async (req, res) => {
         return;
     }
     let newFileNamesArray = [];
+
+    // Renames all the file present in the request &
+    // Creates a data point for each file
+    // Sets is_tagged to false for dataset if 
+    // a new datapoint is created
     files.forEach((file, idx) => {
         const currentTime = new Date().toISOString();
         const newFileName = `${dataset_id}__${currentTime}__${file?.originalFilename}`;
-        fs.rename(file.path, `public/uploads/${newFileName}`, (err) => {
+        fs.rename(file.path, `public/uploads/${newFileName}`, async (err) => {
             if(err) {
                 logger.error(err);
+                return;
             }
             logger.info(idx, "Adding data point to db: ", newFileName);
             newFileNamesArray.push(newFileName);
@@ -97,6 +104,13 @@ handler.post(async (req, res) => {
                 score: 0.0,
                 state: "PENDING",
                 is_deleted: false
+            });
+            logger.debug("After data point addition to db: ", newFileName);
+            findItemByIdAndPartialUpdate<Dataset>("datasets", dataset_id[0], {
+                modified_on: currentTime,
+                is_tagged: false
+            }).then(() => {
+                logger.debug("New DataPoint added - ", "Changing DataSet is_tagged to false");
             })
             logger.info(`File uploaded to ${newFileName}`);
         })

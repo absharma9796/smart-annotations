@@ -1,15 +1,19 @@
-import { CheckCircleRounded, CloseRounded, KeyboardArrowLeftRounded, SkipNextRounded, TipsAndUpdatesRounded, TurnedInRounded } from '@mui/icons-material';
+import { CheckCircleRounded, CloseRounded, ErrorRounded, KeyboardArrowLeftRounded, SkipNextRounded, TipsAndUpdatesRounded, TurnedInRounded } from '@mui/icons-material';
 import { Button, Skeleton, Tooltip, Typography } from '@mui/material';
 import { setDatapoints__action, setDatasets__action } from '@redux/actions';
 import { useReduxSelector } from '@redux/hooks';
 import { datasetById__selector } from '@redux/selectors';
 import { datapointsList__selector } from '@redux/selectors/datapoints.selector';
+import { checkConsensusState } from '@utils/checkConsensusState';
+import { checkDatasetTagged } from '@utils/checkDatasetTagged';
 import logger from '@utils/logger';
+import dynamic from 'next/dynamic';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getDataPoints__api } from 'src/pages/api/data';
 import { updateDatapoint__api } from 'src/pages/api/data/[data_id]';
-import AudioGraph from './AudioGraph';
+import { updateDataset__api } from 'src/pages/api/datasets/[dataset_id]';
+const AudioGraph = dynamic(() => import('./AudioGraph'), { ssr: false });
 
 type DatasetLabelingHomeProps = {
     dataset_id: string | number;
@@ -63,18 +67,70 @@ const DatasetLabelingHome: React.FC<DatasetLabelingHomeProps> = ({
         //TODO Call API to update labels
         setisUpdatingLabels(true);
         let newLabels = datapointsForSelectedDataset[audioIdx]?.labels?.slice();
+        let newReviewerLabel = datapointsForSelectedDataset[audioIdx]?.reviewer_labels;
+        let newState = datapointsForSelectedDataset[audioIdx]?.state;
         const userLabelIndex = datapointsForSelectedDataset[audioIdx]?.labels.findIndex(l => l?.user_id === user?.id);
-        if(userLabelIndex > -1) {
-            newLabels[userLabelIndex] = {
-                user_id: user?.id,
-                label: selectedLabels,
+
+        if(datapointsForSelectedDataset[audioIdx]?.state !== "PENDING") {
+            return;
+        }
+
+        if(datapointsForSelectedDataset[audioIdx]?.labels.length < datasetMetadata?.maximum_voters) {
+            if(userLabelIndex > -1) {
+                newLabels[userLabelIndex] = {
+                    user_id: user?.id,
+                    label: selectedLabels,
+                }
+            } else {
+                // logger.info(`Adding new label for user ${user?.id}`, newLabels);
+                newLabels.push({
+                    user_id: user?.id,
+                    label: selectedLabels,
+                })
             }
-        } else {
-            logger.info(`Adding new label for user ${user?.id}`, newLabels);
-            newLabels.push({
-                user_id: user?.id,
-                label: selectedLabels,
+        }
+
+        // Checks if consensus achieved or not for the current datapoint
+        const consensusStatus = checkConsensusState(
+            newLabels,
+            datasetMetadata?.minimum_consensus,
+            datasetMetadata?.maximum_voters
+        );
+
+        newState = consensusStatus.state;
+        
+        // If consensus achieved, reward the user
+        if(consensusStatus?.winners?.length) {
+            //TODO: Call API to update user score
+            consensusStatus.winners.forEach((user_id) => {
+                
             })
+        }
+        
+        
+        // Checks if after adding the new label, if the dataset
+        // should be marked as tagged
+        const updatedDatapoint = [...datapointsForSelectedDataset];
+        updatedDatapoint[audioIdx] = {
+            ...datapointsForSelectedDataset[audioIdx],
+            state: newState,
+        }
+        const isDatasetTagged = checkDatasetTagged(updatedDatapoint);
+        if(isDatasetTagged) {
+            updateDataset__api({
+                dataset_id,
+                data: {
+                    ...datasetMetadata,
+                    is_tagged: true
+                }
+            });
+        }
+
+        if(!newReviewerLabel?.user_id && (user?.role === "admin" || user?.role === "reviewer")) {
+            newReviewerLabel = {
+                user_id: user?.id,
+                label: selectedLabels
+            };
         }
         const { success, data } = await updateDatapoint__api({
             dataset_id,
@@ -82,6 +138,8 @@ const DatasetLabelingHome: React.FC<DatasetLabelingHomeProps> = ({
             data: {
                 ...datapointsForSelectedDataset[audioIdx],
                 labels: newLabels,
+                state: newState,
+                reviewer_labels: newReviewerLabel,
                 tagged_by: newLabels.length
             }
         })
@@ -134,12 +192,12 @@ const DatasetLabelingHome: React.FC<DatasetLabelingHomeProps> = ({
                 {
                     hasPreviouslyLabelled ?
                     <>
-                        <CheckCircleRounded fontSize='small' className="mx-2 my-1 fill-current text-green-500"/>
+                        <CheckCircleRounded fontSize="small" className="mx-2 my-1 fill-current text-green-500"/>
                         You have already labelled this data point
                     </>
                         :
                     <>
-                        <TipsAndUpdatesRounded fontSize='small' className="mx-2 my-1 fill-current text-green-500"/>
+                        <TipsAndUpdatesRounded fontSize="small" className="mx-2 my-1 fill-current text-green-500"/>
                         Select all labels that apply to this audio clip
                     </>
                 }
@@ -241,16 +299,36 @@ const DatasetLabelingHome: React.FC<DatasetLabelingHomeProps> = ({
                 >
                     Previous Audio
                 </Button>
-                <Button
-                    size="large"
-                    className="capitalize mx-10 bg-amber-500 hover:bg-amber-600"
-                    variant="contained"
-                    startIcon={<TurnedInRounded />}
-                    disabled={!selectedLabels.length || isUpdatingLabels}
-                    onClick={handleSumbitLabelsForCurrentAudio}
-                >
-                    {isUpdatingLabels ? "Submitting" :"Submit Labels"}
-                </Button>
+                {
+                    datapointsForSelectedDataset[audioIdx]?.state !== "PENDING" ?
+                    <Tooltip
+                        title={`Datapoint is labelled with Status ${datapointsForSelectedDataset[audioIdx]?.state}`}
+                    >
+                        {
+                            datapointsForSelectedDataset[audioIdx]?.state === "COMPLETE" ?
+                            <div className="flex items-center px-3 border border-green-400 bg-green-100/80 text-green-600 rounded mr-4 text-sm">
+                                <CheckCircleRounded fontSize='small' className="mr-2"/> 
+                                {datapointsForSelectedDataset[audioIdx]?.state}
+                            </div>
+                                    :
+                            <div className="flex items-center px-3 border border-red-400 bg-red-100/80 text-red-600 rounded mr-4 text-sm">
+                                <ErrorRounded fontSize='small' className="mr-2"/>
+                                {datapointsForSelectedDataset[audioIdx]?.state}
+                            </div>
+                        }
+                    </Tooltip>
+                        :
+                    <Button
+                        size="large"
+                        className="capitalize mx-10 bg-amber-500 hover:bg-amber-600"
+                        variant="contained"
+                        startIcon={<TurnedInRounded />}
+                        disabled={!selectedLabels.length || isUpdatingLabels}
+                        onClick={handleSumbitLabelsForCurrentAudio}
+                    >
+                        {isUpdatingLabels ? "Submitting" :"Submit Labels"}
+                    </Button>   
+                }
                 <Button
                     size="large"
                     className="capitalize mx-10"

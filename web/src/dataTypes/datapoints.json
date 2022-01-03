@@ -6,7 +6,7 @@
     "created_on": "2022-01-02T09:57:05.020Z",
     "last_updated_on": "2022-01-02T09:57:05.020Z",
     "alternatives": null,
-    "tagged_by": 2,
+    "tagged_by": 3,
     "labels": [
       {
         "user_id": 1,
@@ -21,11 +21,26 @@
         "label": [
           "other"
         ]
+      },
+      {
+        "user_id": 3,
+        "label": [
+          "other",
+          "dog"
+        ]
       }
     ],
     "score": 0,
-    "state": "PENDING",
-    "is_deleted": false
+    "state": "COMPLETE",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 1,
+      "label": [
+        "other",
+        "dog",
+        "cat"
+      ]
+    }
   },
   {
     "id": "9e89234f-773f-4494-ab3d-5df910c9b454",
@@ -34,12 +49,13 @@
     "created_on": "2022-01-02T09:58:41.585Z",
     "last_updated_on": "2022-01-02T09:58:41.585Z",
     "alternatives": null,
-    "tagged_by": 2,
+    "tagged_by": 3,
     "labels": [
       {
         "user_id": 1,
         "label": [
-          "other"
+          "other",
+          "dog"
         ]
       },
       {
@@ -47,11 +63,25 @@
         "label": [
           "other"
         ]
+      },
+      {
+        "user_id": 3,
+        "label": [
+          "other",
+          "dog"
+        ]
       }
     ],
     "score": 0,
-    "state": "PENDING",
-    "is_deleted": false
+    "state": "CONFLICT",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 1,
+      "label": [
+        "other",
+        "dog"
+      ]
+    }
   },
   {
     "id": "a2562047-53da-4b4d-b6f0-fb355032d897",
@@ -60,7 +90,7 @@
     "created_on": "2022-01-02T10:11:01.049Z",
     "last_updated_on": "2022-01-02T10:11:01.049Z",
     "alternatives": null,
-    "tagged_by": 2,
+    "tagged_by": 3,
     "labels": [
       {
         "user_id": 1,
@@ -74,11 +104,25 @@
           "cat",
           "other"
         ]
+      },
+      {
+        "user_id": 3,
+        "label": [
+          "other",
+          "dog"
+        ]
       }
     ],
     "score": 0,
-    "state": "PENDING",
-    "is_deleted": false
+    "state": "COMPLETE",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 3,
+      "label": [
+        "other",
+        "cat"
+      ]
+    }
   },
   {
     "id": "374fb3a6-70db-4b12-a4b1-a1d3e3b6206e",
@@ -87,7 +131,7 @@
     "created_on": "2022-01-02T10:25:57.465Z",
     "last_updated_on": "2022-01-02T10:25:57.465Z",
     "alternatives": null,
-    "tagged_by": 2,
+    "tagged_by": 3,
     "labels": [
       {
         "user_id": 1,
@@ -102,10 +146,974 @@
           "other",
           "cat"
         ]
+      },
+      {
+        "user_id": 3,
+        "label": [
+          "dog",
+          "other"
+        ]
       }
     ],
     "score": 0,
-    "state": "PENDING",
-    "is_deleted": false
+    "state": "COMPLETE",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 3,
+      "label": [
+        "dog",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": "f030d4ec-4c7c-4a61-b559-113a90a27ca9",
+    "dataset_id": "7de1b920-ef34-4de6-9e5b-1f56781dfacd",
+    "audio": "/uploads/7de1b920-ef34-4de6-9e5b-1f56781dfacd__2022-01-03T12:42:18.599Z__Cool Electronics - AC installation Demo.mp3",
+    "created_on": "2022-01-03T12:42:18.599Z",
+    "last_updated_on": "2022-01-03T12:42:18.599Z",
+    "alternatives": null,
+    "tagged_by": 2,
+    "labels": [
+      {
+        "user_id": 1,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "male",
+          "female"
+        ]
+      },
+      {
+        "user_id": 3,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "male",
+          "female"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "COMPLETE",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 1,
+      "label": [
+        "bot",
+        "human",
+        "question",
+        "answer",
+        "male",
+        "female"
+      ]
+    }
+  },
+  {
+    "id": "0da66675-102a-4a46-8472-b9ab31bf2bfc",
+    "dataset_id": "7de1b920-ef34-4de6-9e5b-1f56781dfacd",
+    "audio": "/uploads/7de1b920-ef34-4de6-9e5b-1f56781dfacd__2022-01-03T12:42:28.873Z__Final+FAQ+Handling.mp3",
+    "created_on": "2022-01-03T12:42:28.873Z",
+    "last_updated_on": "2022-01-03T12:42:28.873Z",
+    "alternatives": null,
+    "tagged_by": 2,
+    "labels": [
+      {
+        "user_id": 1,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "male",
+          "female"
+        ]
+      },
+      {
+        "user_id": 3,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "male",
+          "female"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "COMPLETE",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 1,
+      "label": [
+        "bot",
+        "human",
+        "question",
+        "answer",
+        "male",
+        "female"
+      ]
+    }
+  },
+  {
+    "id": "0a7a5f5f-94a2-48a0-a19e-38d7206324f4",
+    "dataset_id": "1dbdf6be-c9e9-4965-abca-46bae5374994",
+    "audio": "/uploads/1dbdf6be-c9e9-4965-abca-46bae5374994__2022-01-03T13:11:14.625Z__US+Insurance+Demo+-+Address+Change+Request.mp3",
+    "created_on": "2022-01-03T13:11:14.625Z",
+    "last_updated_on": "2022-01-03T13:11:14.625Z",
+    "alternatives": null,
+    "tagged_by": 3,
+    "labels": [
+      {
+        "user_id": 3,
+        "label": [
+          "other",
+          "dog"
+        ]
+      },
+      {
+        "user_id": 1,
+        "label": [
+          "other",
+          "dog"
+        ]
+      },
+      {
+        "user_id": 2,
+        "label": [
+          "other",
+          "dog"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "COMPLETE",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 3,
+      "label": [
+        "other",
+        "dog"
+      ]
+    }
+  },
+  {
+    "id": "e454a5ab-6423-4f96-91c7-6c1c329588c4",
+    "dataset_id": "1dbdf6be-c9e9-4965-abca-46bae5374994",
+    "audio": "/uploads/1dbdf6be-c9e9-4965-abca-46bae5374994__2022-01-03T13:15:50.656Z__insurance_vernacular_v1.wav",
+    "created_on": "2022-01-03T13:15:50.656Z",
+    "last_updated_on": "2022-01-03T13:15:50.656Z",
+    "alternatives": null,
+    "tagged_by": 3,
+    "labels": [
+      {
+        "user_id": 3,
+        "label": [
+          "dog",
+          "other"
+        ]
+      },
+      {
+        "user_id": 1,
+        "label": [
+          "other",
+          "dog"
+        ]
+      },
+      {
+        "user_id": 2,
+        "label": [
+          "other",
+          "dog"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "COMPLETE",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 3,
+      "label": [
+        "dog",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": "16a02543-742b-42f8-ae49-373e94c69160",
+    "dataset_id": "7de1b920-ef34-4de6-9e5b-1f56781dfacd",
+    "audio": "/uploads/7de1b920-ef34-4de6-9e5b-1f56781dfacd__2022-01-03T13:21:25.028Z__US+Insurance+Demo+-+Address+Change+Request.mp3",
+    "created_on": "2022-01-03T13:21:25.028Z",
+    "last_updated_on": "2022-01-03T13:21:25.028Z",
+    "alternatives": null,
+    "tagged_by": 2,
+    "labels": [
+      {
+        "user_id": 1,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "male",
+          "female"
+        ]
+      },
+      {
+        "user_id": 3,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "male",
+          "female"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "COMPLETE",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 1,
+      "label": [
+        "bot",
+        "human",
+        "question",
+        "answer",
+        "male",
+        "female"
+      ]
+    }
+  },
+  {
+    "id": "c24f35c3-ef5d-4ec7-83fe-69da73fc2ec7",
+    "dataset_id": "7de1b920-ef34-4de6-9e5b-1f56781dfacd",
+    "audio": "/uploads/7de1b920-ef34-4de6-9e5b-1f56781dfacd__2022-01-03T13:23:03.376Z__US+Insurance+Demo+-+Address+Change+Request.mp3",
+    "created_on": "2022-01-03T13:23:03.376Z",
+    "last_updated_on": "2022-01-03T13:23:03.376Z",
+    "alternatives": null,
+    "tagged_by": 2,
+    "labels": [
+      {
+        "user_id": 1,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "male",
+          "female"
+        ]
+      },
+      {
+        "user_id": 3,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "male",
+          "female"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "COMPLETE",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 1,
+      "label": [
+        "bot",
+        "human",
+        "question",
+        "answer",
+        "male",
+        "female"
+      ]
+    }
+  },
+  {
+    "id": "2972cf80-2e55-46bb-a73a-d803004a66ed",
+    "dataset_id": "7de1b920-ef34-4de6-9e5b-1f56781dfacd",
+    "audio": "/uploads/7de1b920-ef34-4de6-9e5b-1f56781dfacd__2022-01-03T13:25:56.547Z__Final+FAQ+Handling.mp3",
+    "created_on": "2022-01-03T13:25:56.547Z",
+    "last_updated_on": "2022-01-03T13:25:56.547Z",
+    "alternatives": null,
+    "tagged_by": 2,
+    "labels": [
+      {
+        "user_id": 1,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "male",
+          "female"
+        ]
+      },
+      {
+        "user_id": 3,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "male",
+          "female"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "COMPLETE",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 1,
+      "label": [
+        "bot",
+        "human",
+        "question",
+        "answer",
+        "male",
+        "female"
+      ]
+    }
+  },
+  {
+    "id": "576d1730-e64c-430e-bcc1-4a50617a847f",
+    "dataset_id": "7de1b920-ef34-4de6-9e5b-1f56781dfacd",
+    "audio": "/uploads/7de1b920-ef34-4de6-9e5b-1f56781dfacd__2022-01-03T13:27:34.766Z__insurance_vernacular_v1.wav",
+    "created_on": "2022-01-03T13:27:34.766Z",
+    "last_updated_on": "2022-01-03T13:27:34.766Z",
+    "alternatives": null,
+    "tagged_by": 2,
+    "labels": [
+      {
+        "user_id": 3,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "female"
+        ]
+      },
+      {
+        "user_id": 2,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "female"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "COMPLETE",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 1,
+      "label": [
+        "bot",
+        "human",
+        "question",
+        "answer",
+        "male",
+        "female"
+      ]
+    }
+  },
+  {
+    "id": "9965fa1f-f175-45ac-82d8-c759c8cc92e7",
+    "dataset_id": "7de1b920-ef34-4de6-9e5b-1f56781dfacd",
+    "audio": "/uploads/7de1b920-ef34-4de6-9e5b-1f56781dfacd__2022-01-03T13:30:20.015Z__Cool Electronics - AC installation Demo.mp3",
+    "created_on": "2022-01-03T13:30:20.015Z",
+    "last_updated_on": "2022-01-03T13:30:20.015Z",
+    "alternatives": null,
+    "tagged_by": 2,
+    "labels": [
+      {
+        "user_id": 1,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "male",
+          "female"
+        ]
+      },
+      {
+        "user_id": 3,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "female",
+          "male"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "COMPLETE",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 1,
+      "label": [
+        "bot",
+        "human",
+        "question",
+        "answer",
+        "male",
+        "female"
+      ]
+    }
+  },
+  {
+    "id": "ebeabd70-ae6a-4178-bc6e-1a2808831459",
+    "dataset_id": "7de1b920-ef34-4de6-9e5b-1f56781dfacd",
+    "audio": "/uploads/7de1b920-ef34-4de6-9e5b-1f56781dfacd__2022-01-03T13:31:29.738Z__insurance_vernacular_v1.wav",
+    "created_on": "2022-01-03T13:31:29.738Z",
+    "last_updated_on": "2022-01-03T13:31:29.738Z",
+    "alternatives": null,
+    "tagged_by": 2,
+    "labels": [
+      {
+        "user_id": 1,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "male",
+          "female"
+        ]
+      },
+      {
+        "user_id": 3,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "female"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "CONFLICT",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 1,
+      "label": [
+        "bot",
+        "human",
+        "question",
+        "answer",
+        "male",
+        "female"
+      ]
+    }
+  },
+  {
+    "id": "573be002-fadf-4395-9974-8c345e235233",
+    "dataset_id": "7de1b920-ef34-4de6-9e5b-1f56781dfacd",
+    "audio": "/uploads/7de1b920-ef34-4de6-9e5b-1f56781dfacd__2022-01-03T13:31:56.839Z__US+Insurance+Demo+-+Address+Change+Request.mp3",
+    "created_on": "2022-01-03T13:31:56.839Z",
+    "last_updated_on": "2022-01-03T13:31:56.839Z",
+    "alternatives": null,
+    "tagged_by": 2,
+    "labels": [
+      {
+        "user_id": 1,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "male",
+          "female"
+        ]
+      },
+      {
+        "user_id": 3,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "female"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "CONFLICT",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 1,
+      "label": [
+        "bot",
+        "human",
+        "question",
+        "answer",
+        "male",
+        "female"
+      ]
+    }
+  },
+  {
+    "id": "b1a2aeeb-41dc-4e22-bfe2-3fabdee54fd1",
+    "dataset_id": "7de1b920-ef34-4de6-9e5b-1f56781dfacd",
+    "audio": "/uploads/7de1b920-ef34-4de6-9e5b-1f56781dfacd__2022-01-03T13:34:04.387Z__insurance_vernacular_v1.wav",
+    "created_on": "2022-01-03T13:34:04.387Z",
+    "last_updated_on": "2022-01-03T13:34:04.387Z",
+    "alternatives": null,
+    "tagged_by": 2,
+    "labels": [
+      {
+        "user_id": 1,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "male",
+          "female"
+        ]
+      },
+      {
+        "user_id": 3,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "female"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "CONFLICT",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 1,
+      "label": [
+        "bot",
+        "human",
+        "question",
+        "answer",
+        "male",
+        "female"
+      ]
+    }
+  },
+  {
+    "id": "43a4418a-bab8-4018-b187-44dc6b26d324",
+    "dataset_id": "7de1b920-ef34-4de6-9e5b-1f56781dfacd",
+    "audio": "/uploads/7de1b920-ef34-4de6-9e5b-1f56781dfacd__2022-01-03T13:38:16.381Z__Final+FAQ+Handling.mp3",
+    "created_on": "2022-01-03T13:38:16.381Z",
+    "last_updated_on": "2022-01-03T13:38:16.381Z",
+    "alternatives": null,
+    "tagged_by": 2,
+    "labels": [
+      {
+        "user_id": 1,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "male",
+          "female"
+        ]
+      },
+      {
+        "user_id": 3,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "male",
+          "female"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "COMPLETE",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 1,
+      "label": [
+        "bot",
+        "human",
+        "question",
+        "answer",
+        "male",
+        "female"
+      ]
+    }
+  },
+  {
+    "id": "30349fc7-1055-4ef3-b02c-8be890abcfc7",
+    "dataset_id": "7de1b920-ef34-4de6-9e5b-1f56781dfacd",
+    "audio": "/uploads/7de1b920-ef34-4de6-9e5b-1f56781dfacd__2022-01-03T13:39:27.465Z__insurance_vernacular_v1.wav",
+    "created_on": "2022-01-03T13:39:27.465Z",
+    "last_updated_on": "2022-01-03T13:39:27.465Z",
+    "alternatives": null,
+    "tagged_by": 2,
+    "labels": [
+      {
+        "user_id": 1,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "female"
+        ]
+      },
+      {
+        "user_id": 3,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "female"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "COMPLETE",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 1,
+      "label": [
+        "bot",
+        "human",
+        "question",
+        "answer",
+        "female"
+      ]
+    }
+  },
+  {
+    "id": "788ac1e4-21ea-476d-a799-e3e1fb761eeb",
+    "dataset_id": "7de1b920-ef34-4de6-9e5b-1f56781dfacd",
+    "audio": "/uploads/7de1b920-ef34-4de6-9e5b-1f56781dfacd__2022-01-03T13:41:30.095Z__Final+FAQ+Handling.mp3",
+    "created_on": "2022-01-03T13:41:30.095Z",
+    "last_updated_on": "2022-01-03T13:41:30.095Z",
+    "alternatives": null,
+    "tagged_by": 2,
+    "labels": [
+      {
+        "user_id": 1,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "male",
+          "female"
+        ]
+      },
+      {
+        "user_id": 3,
+        "label": [
+          "bot",
+          "male",
+          "female",
+          "human",
+          "question",
+          "answer"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "COMPLETE",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 1,
+      "label": [
+        "bot",
+        "human",
+        "question",
+        "answer",
+        "male",
+        "female"
+      ]
+    }
+  },
+  {
+    "id": "d6c04f6a-d91a-48b1-8c34-c2ed62d3c058",
+    "dataset_id": "7de1b920-ef34-4de6-9e5b-1f56781dfacd",
+    "audio": "/uploads/7de1b920-ef34-4de6-9e5b-1f56781dfacd__2022-01-03T13:42:24.971Z__insurance_vernacular_v1.wav",
+    "created_on": "2022-01-03T13:42:24.971Z",
+    "last_updated_on": "2022-01-03T13:42:24.971Z",
+    "alternatives": null,
+    "tagged_by": 2,
+    "labels": [
+      {
+        "user_id": 1,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "female"
+        ]
+      },
+      {
+        "user_id": 3,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "female"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "COMPLETE",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 1,
+      "label": [
+        "bot",
+        "human",
+        "question",
+        "answer",
+        "female"
+      ]
+    }
+  },
+  {
+    "id": "ff7cc441-0f3f-4834-8aa9-8dfffb8357a8",
+    "dataset_id": "7de1b920-ef34-4de6-9e5b-1f56781dfacd",
+    "audio": "/uploads/7de1b920-ef34-4de6-9e5b-1f56781dfacd__2022-01-03T13:43:32.746Z__Final+FAQ+Handling.mp3",
+    "created_on": "2022-01-03T13:43:32.746Z",
+    "last_updated_on": "2022-01-03T13:43:32.746Z",
+    "alternatives": null,
+    "tagged_by": 2,
+    "labels": [
+      {
+        "user_id": 1,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "male",
+          "female"
+        ]
+      },
+      {
+        "user_id": 3,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "male",
+          "female"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "COMPLETE",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 1,
+      "label": [
+        "bot",
+        "human",
+        "question",
+        "answer",
+        "male",
+        "female"
+      ]
+    }
+  },
+  {
+    "id": "629642f7-9611-464b-a60e-c8228f8ca118",
+    "dataset_id": "7de1b920-ef34-4de6-9e5b-1f56781dfacd",
+    "audio": "/uploads/7de1b920-ef34-4de6-9e5b-1f56781dfacd__2022-01-03T13:44:12.212Z__insurance_vernacular_v1.wav",
+    "created_on": "2022-01-03T13:44:12.212Z",
+    "last_updated_on": "2022-01-03T13:44:12.212Z",
+    "alternatives": null,
+    "tagged_by": 2,
+    "labels": [
+      {
+        "user_id": 1,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "female"
+        ]
+      },
+      {
+        "user_id": 3,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "female"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "COMPLETE",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 1,
+      "label": [
+        "bot",
+        "human",
+        "question",
+        "answer",
+        "female"
+      ]
+    }
+  },
+  {
+    "id": "3261d638-69c8-4d0a-acd2-54b37e8e8c20",
+    "dataset_id": "7de1b920-ef34-4de6-9e5b-1f56781dfacd",
+    "audio": "/uploads/7de1b920-ef34-4de6-9e5b-1f56781dfacd__2022-01-03T13:54:36.759Z__insurance_vernacular_v1.wav",
+    "created_on": "2022-01-03T13:54:36.759Z",
+    "last_updated_on": "2022-01-03T13:54:36.759Z",
+    "alternatives": null,
+    "tagged_by": 2,
+    "labels": [
+      {
+        "user_id": 1,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "female"
+        ]
+      },
+      {
+        "user_id": 3,
+        "label": [
+          "bot",
+          "human",
+          "question",
+          "answer",
+          "female"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "COMPLETE",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 1,
+      "label": [
+        "bot",
+        "human",
+        "question",
+        "answer",
+        "female"
+      ]
+    }
+  },
+  {
+    "id": "27320cf3-d869-4284-b7b3-9b57b17cff60",
+    "dataset_id": "1dbdf6be-c9e9-4965-abca-46bae5374994",
+    "audio": "/uploads/1dbdf6be-c9e9-4965-abca-46bae5374994__2022-01-03T13:59:52.721Z__insurance_vernacular_v1.wav",
+    "created_on": "2022-01-03T13:59:52.721Z",
+    "last_updated_on": "2022-01-03T13:59:52.721Z",
+    "alternatives": null,
+    "tagged_by": 3,
+    "labels": [
+      {
+        "user_id": 3,
+        "label": [
+          "dog",
+          "other"
+        ]
+      },
+      {
+        "user_id": 1,
+        "label": [
+          "other",
+          "dog"
+        ]
+      },
+      {
+        "user_id": 2,
+        "label": [
+          "other",
+          "dog"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "COMPLETE",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 3,
+      "label": [
+        "dog",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": "549ec2fc-06b6-483f-9dbb-ce2e0c4e9bbf",
+    "dataset_id": "1dbdf6be-c9e9-4965-abca-46bae5374994",
+    "audio": "/uploads/1dbdf6be-c9e9-4965-abca-46bae5374994__2022-01-03T14:02:25.394Z__Final+FAQ+Handling.mp3",
+    "created_on": "2022-01-03T14:02:25.394Z",
+    "last_updated_on": "2022-01-03T14:02:25.394Z",
+    "alternatives": null,
+    "tagged_by": 3,
+    "labels": [
+      {
+        "user_id": 3,
+        "label": [
+          "dog",
+          "other"
+        ]
+      },
+      {
+        "user_id": 1,
+        "label": [
+          "other",
+          "dog"
+        ]
+      },
+      {
+        "user_id": 2,
+        "label": [
+          "other",
+          "dog"
+        ]
+      }
+    ],
+    "score": 0,
+    "state": "COMPLETE",
+    "is_deleted": false,
+    "reviewer_labels": {
+      "user_id": 3,
+      "label": [
+        "dog",
+        "other"
+      ]
+    }
   }
 ]

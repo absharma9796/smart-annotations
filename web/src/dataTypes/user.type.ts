@@ -131,5 +131,6 @@ export const SampleEmailPassMap: {[email: string]: string} = {
     "psypsy@gmail.com": "qwerty1234",
     "iamreviewer@gmail.com": "qwerty1234",
     "iammember@gmail.com": "qwerty1234",
+    "iamadmin@gmail.com": "qwerty1234"
 }
   

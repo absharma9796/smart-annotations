@@ -19,6 +19,7 @@ const DatasetListContainer: React.FC<DatasetListContainerProps> = ({
     const dispatch = useReduxDispatch();
 
     const [loading, setloading] = useState(true);
+    const [searchQuery, setsearchQuery] = useState("");
 
     useEffect(() => {
         //TODO: call Datasets api
@@ -43,6 +44,8 @@ const DatasetListContainer: React.FC<DatasetListContainerProps> = ({
                     size='small'
                     className="focus-within:border-amber-300 focus-within:text-amber-900"
                     placeholder='Search'
+                    value={searchQuery}
+                    onChange={(e) => setsearchQuery(e.target.value)}
                 />
                 <Tooltip title='Refresh'>
                     <IconButton
@@ -66,7 +69,9 @@ const DatasetListContainer: React.FC<DatasetListContainerProps> = ({
                     />
                 </div>
                     :
-                <DatasetList />
+                <DatasetList 
+                    searchQuery={searchQuery}
+                />
             }
             <div className="block py-10"></div>
         </div>

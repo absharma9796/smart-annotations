@@ -3,11 +3,17 @@ import logger from "@utils/logger";
 import { createSelector } from "reselect";
 
 const datasetsListSlice = (state: RootState) => state.datasetsState.datasetsById;
+const searchQueryInput = (_, searchQuery?: string) => searchQuery;
 
 export const datasetsList__selector = createSelector(
-    [datasetsListSlice],
-    (datasetsById) => {
-        return Object.values(datasetsById);
+    [datasetsListSlice, searchQueryInput],
+    (datasetsById, searchQuery) => {
+        if(!searchQuery?.length) {
+            return Object.values(datasetsById);
+        }
+        return Object.values(datasetsById).filter(dataset => {
+            return dataset.name.toLowerCase().includes(searchQuery.toLowerCase());
+        });
     }
 );
 

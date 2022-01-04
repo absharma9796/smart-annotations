@@ -8,12 +8,14 @@ import { AbcRounded, AudiotrackRounded, LabelImportantRounded } from '@mui/icons
 import { AcceptableDatasetType } from '@dataTypes/dataset.type';
 import { useRouter } from 'next/router';
 
-const DatasetList = () => {
+const DatasetList = ({
+    searchQuery,
+}) => {
 
     const router = useRouter();
 
-    const datasets = useReduxSelector((state) => datasetsList__selector(state));
-    logger.log('DatasetList', datasets);
+    const datasets = useReduxSelector((state) => datasetsList__selector(state, searchQuery));
+    // logger.log('DatasetList', datasets);
 
     const dataTypeLogoMap = (dataType: AcceptableDatasetType , iconProps) => {
         switch (dataType) {

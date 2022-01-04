@@ -28,23 +28,26 @@ const DatasetsHome = () => {
                     </b>
                 </Typography>
             </div>
-            <div className="actions-panel mt-5 p-4 bg-amber-100/50 shadow-inner">
-                <motion.div 
-                    className="cursor-pointer flex flex-col justify-center text-gray-800 items-center w-32 h-32 bg-white hover:bg-gray-50 hover: p-4 rounded-lg"
-                    whileHover={{
-                        scale: 1.05
-                    }}
-                    whileTap={{
-                        scale: 0.9
-                    }}
-                    onClick={() => setcreateDatasetDialogOpen(true)}
-                >
-                    <IconButton>
-                        <AddCircleRounded className="fill-current text-amber-400"/>
-                    </IconButton>
-                    <span>Add Dataset</span>
-                </motion.div>
-            </div>
+            {
+                user?.role === 'admin' &&
+                <div className="actions-panel mt-5 p-4 bg-amber-100/50 shadow-inner">
+                    <motion.div 
+                        className="cursor-pointer flex flex-col justify-center text-gray-800 items-center w-32 h-32 bg-white hover:bg-gray-50 hover: p-4 rounded-lg"
+                        whileHover={{
+                            scale: 1.05
+                        }}
+                        whileTap={{
+                            scale: 0.9
+                        }}
+                        onClick={() => setcreateDatasetDialogOpen(true)}
+                    >
+                        <IconButton>
+                            <AddCircleRounded className="fill-current text-amber-400"/>
+                        </IconButton>
+                        <span>Add Dataset</span>
+                    </motion.div>
+                </div>
+            }
             <hr 
                 className="border-gray-300 my-2"
             />

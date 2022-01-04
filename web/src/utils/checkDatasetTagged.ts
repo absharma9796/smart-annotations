@@ -8,7 +8,7 @@ export const checkDatasetTagged: (datapoints: DataPoint[]) => boolean = (
         logger.error("checkDatasetTagged: datapoints is not an array");
         return false;
     }
-    if(datapoints.filter((datapoint) => datapoint.state === "COMPLETE").length === datapoints.length) {
+    if(datapoints.filter((datapoint) => datapoint.state !== "PENDING").length === datapoints.length) {
         return true;
     }
     return false;

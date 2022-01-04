@@ -6,12 +6,19 @@ import React, { useEffect, useState } from 'react'
 import { getDatasets__api } from 'src/pages/api/datasets';
 import DatasetList from './DatasetList';
 
-const DatasetListContainer = () => {
+type DatasetListContainerProps = {
+    refreshCounter: number;
+    setrefreshCounter: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const DatasetListContainer: React.FC<DatasetListContainerProps> = ({
+    refreshCounter,
+    setrefreshCounter
+}) => {
 
     const dispatch = useReduxDispatch();
 
     const [loading, setloading] = useState(true);
-    const [refreshCounter, setrefreshCounter] = useState(0);
 
     useEffect(() => {
         //TODO: call Datasets api
@@ -21,7 +28,7 @@ const DatasetListContainer = () => {
             if(success) {
                 dispatch(setDatasets__action(data));
             }
-            setTimeout(() => setloading(false), 2000);
+            setTimeout(() => setloading(false), 500);
         })();
         return () => {};
     }, [refreshCounter]);

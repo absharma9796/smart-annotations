@@ -20,7 +20,7 @@ import { User } from "@dataTypes/user.type";
 */
 handler.patch(async (req, res) => {
 
-    const user_id = req?.userid;
+    const user_id = req?.query?.user_id as string;
     const data = req.body;
 
     logger.debug(`PUT /users/${user_id}`, {data});

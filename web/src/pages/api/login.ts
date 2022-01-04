@@ -28,13 +28,15 @@ handler.post(async (req, res) => {
         return;
     }
     const users = await readItems<User>('users');
-    if(Array.isArray(users) && users.map(user => user.email.toLowerCase()).includes(email.toLowerCase())) {
+    const user = Array.isArray(users) ? users.find(user => user.email?.toLowerCase() === email?.toLowerCase()) : null;
+    if(user) {
         if(SampleEmailPassMap[email.toLowerCase()] === password) {
+            res.setHeader('Set-Cookie', [`token=Bearer ${process.env.API_ACCESS_TOKEN}; HttpOnly; Max-Age=${60*60}`, `user=${user?.email}; HttpOnly; Max-Age=${60*60}`]);
             res.status(200).json({
                 success: true,
                 data: {
                     token: process.env.API_ACCESS_TOKEN,
-                    user: SampleUsers.find(user => user.email.toLowerCase() === email.toLowerCase())
+                    user: user?.email
                 }
             });
         }

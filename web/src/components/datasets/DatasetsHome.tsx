@@ -11,6 +11,7 @@ const DatasetsHome = () => {
     const user = useReduxSelector(state => state?.userState?.user);
 
     const [createDatasetDialogOpen, setcreateDatasetDialogOpen] = useState(false);
+    const [refreshCounter, setrefreshCounter] = useState(0);
 
     return (
         <main className='flex flex-col w-full'>
@@ -56,13 +57,16 @@ const DatasetsHome = () => {
                         <BubbleChartRounded fontSize='inherit' className="mr-2 fill-current text-amber-400"/> Datasets
                     </Typography>
                 </div>
-                <DatasetListContainer />
+                <DatasetListContainer 
+                    refreshCounter={refreshCounter}
+                    setrefreshCounter={setrefreshCounter}
+                />
             </div>
             {
                 createDatasetDialogOpen &&
                 <CreateDatasetDialog 
                     isOpen={createDatasetDialogOpen}
-                    onClose={() => setcreateDatasetDialogOpen(false)}
+                    onClose={() => {setcreateDatasetDialogOpen(false); setrefreshCounter(prev => prev + 1)}}
                 />
             }
         </main>

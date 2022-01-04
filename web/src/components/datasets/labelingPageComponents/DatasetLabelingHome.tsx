@@ -6,7 +6,9 @@ import { datasetById__selector } from '@redux/selectors';
 import { datapointsList__selector } from '@redux/selectors/datapoints.selector';
 import { checkConsensusState } from '@utils/checkConsensusState';
 import { checkDatasetTagged } from '@utils/checkDatasetTagged';
+import { increaseAnnotationCountForUser } from '@utils/increaseAnnotationCountForUser';
 import logger from '@utils/logger';
+import { rewardUserScore } from '@utils/rewardUserScore';
 import dynamic from 'next/dynamic';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -65,10 +67,9 @@ const DatasetLabelingHome: React.FC<DatasetLabelingHomeProps> = ({
     }
 
     const handleSumbitLabelsForCurrentAudio = async () => {
-        //TODO Call API to update labels
+
         setisUpdatingLabels(true);
         let newLabels = datapointsForSelectedDataset[audioIdx]?.labels?.slice();
-        let newReviewerLabel = datapointsForSelectedDataset[audioIdx]?.reviewer_labels;
         let newState = datapointsForSelectedDataset[audioIdx]?.state;
         const userLabelIndex = datapointsForSelectedDataset[audioIdx]?.labels.findIndex(l => l?.user_id === user?.id);
 
@@ -102,24 +103,7 @@ const DatasetLabelingHome: React.FC<DatasetLabelingHomeProps> = ({
         
         // If consensus achieved, reward the user
         if(consensusStatus?.winners?.length) {
-            consensusStatus.winners.forEach((user_id) => {
-                let newAnnotatedCount = user?.annotated_count;
-                let newScore = user?.score;
-                if(!(datapointsForSelectedDataset[audioIdx]?.labels.filter(l => l?.user_id === user_id)?.length)) {
-                    newAnnotatedCount += 1;
-                    newScore = (user?.annotated_count*user?.score + 1) / Math.max(newAnnotatedCount, 1)
-                } else {
-                    newScore = (user?.annotated_count*user?.score + 1) / Math.max(user?.annotated_count, 1);
-                }
-                logger.info("New Score logic: ", newScore, newAnnotatedCount)
-                updateUser__api({
-                    user_id,
-                    data: {
-                        score: newScore,
-                        annotated_count: newAnnotatedCount
-                    }
-                });
-            })
+            rewardUserScore(consensusStatus.winners);
         }
         
         
@@ -130,6 +114,8 @@ const DatasetLabelingHome: React.FC<DatasetLabelingHomeProps> = ({
             ...datapointsForSelectedDataset[audioIdx],
             state: newState,
         }
+
+        // Checks if the dataset should be marked as tagged
         const isDatasetTagged = checkDatasetTagged(updatedDatapoint);
         if(isDatasetTagged) {
             updateDataset__api({
@@ -141,12 +127,8 @@ const DatasetLabelingHome: React.FC<DatasetLabelingHomeProps> = ({
             });
         }
 
-        // if(!newReviewerLabel?.user_id && (user?.role === "admin" || user?.role === "reviewer")) {
-        //     newReviewerLabel = {
-        //         user_id: user?.id,
-        //         label: selectedLabels
-        //     };
-        // }
+        // Update the datapoints with new sumbitted labels
+        // After all the pre processing is done
         const { success, data } = await updateDatapoint__api({
             dataset_id,
             data_id: datapointsForSelectedDataset[audioIdx]?.id,
@@ -154,12 +136,17 @@ const DatasetLabelingHome: React.FC<DatasetLabelingHomeProps> = ({
                 ...datapointsForSelectedDataset[audioIdx],
                 labels: newLabels,
                 state: newState,
-                // reviewer_labels: newReviewerLabel,
                 tagged_by: newLabels.length
             }
         })
         if(success) {
             dispatch(setDatapoints__action([data]));
+
+            // If user is labeling this datapoint for first time
+            // increase this annotated_count
+            if(datapointsForSelectedDataset[audioIdx]?.labels.findIndex(l => l?.user_id === user?.id) < 0) {
+                increaseAnnotationCountForUser(user?.id, user?.annotated_count);
+            }
             handleSkipAudio();
         } else {
             alert('Failed to update labels');
@@ -168,7 +155,7 @@ const DatasetLabelingHome: React.FC<DatasetLabelingHomeProps> = ({
     }
     
     useEffect(() => {
-        //TODO: fetch dataset metadata if not present and also data points
+        //Fetches dataset metadata if not present and also data points
         (async function loadDataPoints() {
             setdataLoading(true);
             const { success, data } = await getDataPoints__api({

@@ -13,11 +13,6 @@ const DatasetsPage = () => {
             title: "Datasets",
             href: "/in/datasets",
             icon: <BubbleChartRounded fontSize="small" className="mr-2"/>
-        },
-        {
-            title: "Users",
-            href: "/in/users",
-            icon: <AccountCircleRounded fontSize="small" className="mr-2" />
         }
     ]
 

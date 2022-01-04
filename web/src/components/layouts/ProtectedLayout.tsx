@@ -22,8 +22,14 @@ const ProtectedLayout: React.FC = ({
     const router = useRouter();
 
     useEffect(() => {
-        //TODO: call user api
+        logger.log("TOKEN: ", sessionStorage.getItem("token"));
+        logger.log("EMAIL: ", sessionStorage.getItem("user"));
+        const token = sessionStorage.getItem("token");
+        const email = sessionStorage.getItem("user");
         (async function loadProfile() {
+            if(!token || !email) return;
+            sessionStorage.setItem("token", token);
+            sessionStorage.setItem("user", email);
             if(appState === __APP_STATES.LOADED) return;
             const { success, data: userDetails } = await getLoggedInUserDetails__api();
             if(success && userDetails?.id) {

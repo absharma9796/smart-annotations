@@ -15,11 +15,11 @@
     "name": "Happy Psyduck",
     "member_since": "2021-12-30T05:18:56.864Z",
     "last_active": "2021-12-30T05:18:56.864Z",
-    "score": 1,
+    "score": 0,
     "role": "admin",
     "email": "psypsy@gmail.com",
     "last_project_id": 1,
-    "annotated_count": 2
+    "annotated_count": 0
   },
   {
     "id": 3,
@@ -45,62 +45,7 @@
   },
   {
     "id": 5,
-    "name": "Happy Psyduck",
-    "member_since": "2021-12-30T05:18:56.864Z",
-    "last_active": "2021-12-30T05:18:56.864Z",
-    "score": 0,
-    "role": "member",
-    "email": "",
-    "last_project_id": 1,
-    "annotated_count": 0
-  },
-  {
-    "id": 6,
-    "name": "Happy Psyduck",
-    "member_since": "2021-12-30T05:18:56.864Z",
-    "last_active": "2021-12-30T05:18:56.864Z",
-    "score": 0,
-    "role": "member",
-    "email": "",
-    "last_project_id": 1,
-    "annotated_count": 0
-  },
-  {
-    "id": 7,
-    "name": "Happy Psyduck",
-    "member_since": "2021-12-30T05:18:56.864Z",
-    "last_active": "2021-12-30T05:18:56.864Z",
-    "score": 0,
-    "role": "member",
-    "email": "",
-    "last_project_id": 1,
-    "annotated_count": 0
-  },
-  {
-    "id": 8,
-    "name": "Happy Psyduck",
-    "member_since": "2021-12-30T05:18:56.864Z",
-    "last_active": "2021-12-30T05:18:56.864Z",
-    "score": 0,
-    "role": "member",
-    "email": "",
-    "last_project_id": 1,
-    "annotated_count": 0
-  },
-  {
-    "id": 9,
-    "name": "Happy Psyduck",
-    "member_since": "2021-12-30T05:18:56.864Z",
-    "last_active": "2021-12-30T05:18:56.864Z",
-    "score": 0,
-    "role": "member",
-    "email": "",
-    "last_project_id": 1,
-    "annotated_count": 0
-  },
-  {
-    "id": 10,
-    "name": "Happy Psyduck",
+    "name": "Agent Admin",
     "member_since": "2021-12-30T05:18:56.864Z",
     "last_active": "2021-12-30T05:18:56.864Z",
     "score": 0,

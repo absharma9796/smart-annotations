@@ -6,8 +6,10 @@ import { readItems } from '@utils/crudApis';
 
 export const authenticationMiddleware = async (req: ExtendedRequest, res: NextApiResponse, next) => {
     
-    const token: string = req.headers?.authorization as string;
-    const email: string = req.headers?.user as string;
+
+    logger?.debug(`authenticationMiddleware: req.cookies:`, req.cookies);
+    const token: string = req.headers?.authorization as string || req.cookies?.token as string;
+    const email: string = req.headers?.user as string || req.cookies?.user as string;
 
     const extractedToken: string = token?.split(' ')[1];
 

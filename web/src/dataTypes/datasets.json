@@ -1,26 +1,24 @@
 [
   {
-    "name": "Sample Dataset",
-    "description": "This is a sample dataset",
+    "name": "S6",
+    "description": "s6",
     "data_type": "audio",
-    "id": "432621cb-bcfd-431e-9a6e-6b7d53318130",
+    "id": "8ade0e8a-780c-45ec-bdf5-17d2b47d0470",
     "source": 1,
-    "created_on": "2022-01-03T17:14:55.498Z",
-    "modified_on": "2022-01-03T17:15:16.602Z",
-    "maximum_voters": 4,
+    "created_on": "2022-01-04T08:38:14.481Z",
+    "modified_on": "2022-01-04T09:27:21.344Z",
+    "maximum_voters": 2,
     "minimum_voters": 2,
     "is_delete": false,
-    "is_tagged": true,
-    "minimum_consensus": 3,
+    "is_tagged": false,
+    "minimum_consensus": 2,
     "labels": [
-      "man",
-      "woman",
-      "bot"
+      "male",
+      "female"
     ],
     "label_colors": [
-      "#AEBBAA",
-      "#DEDBED",
-      "#DDFFFF"
+      "#FFDEEF",
+      "#CFCABF"
     ],
     "type": [
       1

@@ -1,9 +1,6 @@
 module.exports = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx}",
-    "./src/components/**/*.{js,ts,jsx,tsx}",
-    "./src/reusable/**/*.{js,ts,jsx,tsx}",
-    "./public/**/*.{html,js}"
+    "./src/**/*.{html,js,ts,jsx,tsx}"
   ],
   purge: false,
   darkMode: "class",

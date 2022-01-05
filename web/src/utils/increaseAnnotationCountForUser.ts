@@ -3,8 +3,8 @@ import { getUsers__api } from "src/pages/api/users";
 import { updateUser__api } from "src/pages/api/users/[user_id]";
 
 /**
- * Given an array of winners, increases the average
- * score of the winners
+ * Given a user_id, increases 
+ * the annotated_count of that user
  * @param winners 
  * @returns boolean
  */

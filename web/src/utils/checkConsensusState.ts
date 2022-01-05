@@ -9,7 +9,7 @@ import logger from "./logger";
  *  @param labels 
  *  @param minimum_consensus 
  *  @param maximum_voters 
- *  @returns {DataPoint["state"]} {state, winner}
+ *  @returns {state, winners, winnerLabel}
  */
 export const checkConsensusState: (labels: LabelsEntity[], minimum_consensus: number, maximum_voters: number) => {
     state: DataPoint["state"],
